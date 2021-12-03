@@ -1,0 +1,46 @@
+{
+    "name": "arbitrum-truffle",
+    "version": "1.0.0",
+    "description": "",
+    "main": "truffle-config.js",
+    "directories": {
+        "test": "test"
+    },
+    "dependencies": {
+        "@openzeppelin/contracts": "^4.4.0",
+        "@truffle/hdwallet-provider": "^2.0.0",
+        "arb-ethers-web3-bridge": "^0.7.3",
+        "dotenv": "^10.0.0",
+        "truffle-plugin-verify": "^0.5.18"
+    },
+    "devDependencies": {
+        "@typechain/truffle-v5": "^6.0.0",
+        "@types/bn.js": "^5.1.0",
+        "@types/chai": "^4.2.22",
+        "@types/mocha": "^9.0.0",
+        "@types/node": "^16.11.11",
+        "@types/web3": "^1.2.2",
+        "typechain": "^6.0.5",
+        "typescript": "^4.5.2"
+    },
+    "scripts": {
+        "generate-types": "typechain --target=truffle-v5 'build/contracts/*.json'",
+        "postinstall": "truffle compile && yarn generate-types",
+        "migrate": "tsc -p ./tsconfig.migrate.json --outDir ./migrations && truffle migrate",
+        "migrate-reset": "rm -rf ./migrations && tsc -p ./tsconfig.migrate.json --outDir ./migrations && truffle migrate --reset",
+        "typecheck": "tsc --noEmit",
+        "test": "rm -rf ./test && tsc -p ./tsconfig.test.json --outDir ./test && truffle test",
+        "test-reset": "npm run migrate-reset && npm run test"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/codewithgun/arbitrum-truffle.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/codewithgun/arbitrum-truffle/issues"
+    },
+    "homepage": "https://github.com/codewithgun/arbitrum-truffle#readme"
+}
